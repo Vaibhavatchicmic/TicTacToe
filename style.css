@@ -1,0 +1,27 @@
+.game_box{
+    display: flex;
+    flex-flow: column;
+}
+.game_row{
+    display: flex;
+}
+.box{
+    height: 100px;
+    width: 100px;
+    border: solid 2px black ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+}
+.box:hover{
+    background-color: rgb(214, 217, 217);
+}
+.box:active{
+    background-color: rgb(166, 173, 171);
+}
+button{
+    background-color: aliceblue;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
