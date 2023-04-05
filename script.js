@@ -12,10 +12,9 @@ function check_status() {
     game_status = "Player 2 wins";
   } else if (no_of_clicks == 9) {
     game_status = "Game Ends :No one win";
-  }else if(no_of_clicks==0){
-    game_status="First move:player 1"
-  } 
-  else {
+  } else if (no_of_clicks == 0) {
+    game_status = "First move:player 1";
+  } else {
     game_status = curr_symbol == "O" ? "Next Move :player 1" : "Next Move:player 2";
   }
 
@@ -36,19 +35,14 @@ function highlight_win_con(cond) {
   for (let n of cond) {
     boxes_in_dom[n - 1].style.backgroundColor = "#79ba9d";
   }
-  // boxes_in_dom.forEach((box)=>{
-  //     // box[cond[0]-1].style
-  //     if(box)
-  //     box.style.backgroundColor="#79ba9d"
-  // })
 }
 function check_win() {
-  boxes = document.querySelectorAll(".box");
+  // boxes = document.querySelectorAll(".box");
+  boxes=boxes_in_dom;
   boxes_value = [];
   for (i of boxes) {
     boxes_value.push(i.innerHTML);
   }
-  // console.log(boxes_value)
   for (cond of ans_cases) {
     if (
       boxes_value[cond[0] - 1] == "O" &&
@@ -70,19 +64,17 @@ function check_win() {
   }
 }
 window.onload = () => {
-    check_status();
+  check_status();
   boxes_in_dom = document.querySelectorAll(".box");
-  boxes_in_dom.forEach((box) => {
-    box.addEventListener("click", (event) => {
-      if (event.target.innerHTML == "" && winner == 0) {
+  document.querySelector("#game_box").addEventListener('click',(event)=>{
+    if (event.target.innerHTML == "" && winner == 0) {
         no_of_clicks++;
         event.target.innerHTML = curr_symbol;
         toggle_curr_symbol();
         check_status();
         check_win();
       }
-    });
-  });
+  })
   document.querySelector("#reset").addEventListener("click", () => {
     boxes_in_dom.forEach((box) => {
       box.innerHTML = "";
